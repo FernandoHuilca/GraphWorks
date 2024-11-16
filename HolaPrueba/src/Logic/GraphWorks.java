@@ -42,9 +42,9 @@ public class GraphWorks {
     // Declara la lista 'salida' fuera del método que acumule el recorrido
     private ArrayList<String> salida = new ArrayList<>();
     Pila<Nodo> pila = new Pila<>();
+    Pila<Nodo> nodosSalida = new Pila<>();
 
-
-    public void recorridoEnProfundidadGrafoNoDirigido(Nodo<String> nodoInicial, GrafoNoDirigido grafoAlQuePertenece) {
+    public void aplicarRecorridoEnLaberinto(Nodo<String> nodoInicial, Nodo<String> nodoSalida, GrafoNoDirigido grafoAlQuePertenece) {
         if (nodoInicial == null) return;  // Verifica que el nodo no sea nulo
 
         pila.add(nodoInicial); // Agregar el nodo a la pila
@@ -52,15 +52,22 @@ public class GraphWorks {
         nodoInicial.setEstadoVisitado(true); // Marcar como visitado
 
         // Imprimir el estado actual de la pila
-        imprimirEstadoPila();
+        imprimirEstadoPila(pila);
 
         // Recorrer los nodos adyacentes (nodos apuntados)
         for (int i = 0; i < nodoInicial.getNodosAdyacentes().size(); i++) {
             Nodo<String> nodoApuntado = nodoInicial.getNodosAdyacentes().get(i);
 
+            if (nodoApuntado == nodoSalida){
+                for (int j = 0 ; j < pila.getNumDeDatos(); j++){
+                    nodosSalida.add(pila.getDato(j));
+                }
+                nodosSalida.add(nodoSalida);
+            }
+
             // Si el nodo no ha sido visitado, se realiza la llamada recursiva
             if (!nodoApuntado.estaVisitado()) {
-                recorridoEnProfundidadGrafoNoDirigido(nodoApuntado, grafoAlQuePertenece);
+                aplicarRecorridoEnLaberinto(nodoApuntado, nodoSalida,grafoAlQuePertenece);
             }
         }
 
@@ -68,19 +75,20 @@ public class GraphWorks {
         Nodo<String> nodoEliminado = pila.eliminarDato();
 
         // Imprimir el estado actual de la pila
-        imprimirEstadoPila();
+        imprimirEstadoPila(pila);
 
         // Verificar si quedan nodos no visitados en el grafo
         if (pila.estaVacia() && !yaRecorriTodosLosNodos(grafoAlQuePertenece)) {
             Nodo<String> siguienteNodoNoVisitado = grafoAlQuePertenece.getNoVisitado();
             if (siguienteNodoNoVisitado != null) {
-                recorridoEnProfundidadGrafoNoDirigido(siguienteNodoNoVisitado, grafoAlQuePertenece);
+                aplicarRecorridoEnLaberinto(siguienteNodoNoVisitado,nodoSalida, grafoAlQuePertenece);
             }
         }
 
         // Mostrar la salida solo al final del recorrido completo
         if (yaRecorriTodosLosNodos(grafoAlQuePertenece) && pila.estaVacia()) {
             System.out.println("La salida del recorrido es la siguiente: " + salida);
+            System.out.println("EL CAMINO A LA SALIDA ES: "); imprimirEstadoPila(nodosSalida);
         }
     }
 
@@ -95,7 +103,7 @@ public class GraphWorks {
     }
 
 
-    private void imprimirEstadoPila() {
+    private void imprimirEstadoPila(Pila<Nodo> pila) {
         for (int i = 0; i < pila.getNumDeDatos(); i++) {
             System.out.print(" " + pila.getDato(i).getInfoNodo());
         }

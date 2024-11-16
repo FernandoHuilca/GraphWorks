@@ -1,7 +1,5 @@
 package Logic;
 
-import java.util.ArrayList;
-
 // Author:
 public class Main {
     public static void main(String[] args) {
@@ -35,7 +33,11 @@ public class Main {
         System.out.println("Número de nodos: " + grafoNoDirigido.getContadorDeNodos()+ "\n" + "Número de arístas: " + grafoNoDirigido.getContadorDeAristas());
 
         System.out.println("CASO4: Hacer el recorrido a profundidad en un grafo existente en GraphWorks ________________");
-        graphWorks.recorridoEnProfundidadGrafoNoDirigido(nodo00, grafoNoDirigido);
+        graphWorks.aplicarRecorridoEnLaberinto(nodo00,nodo01, grafoNoDirigido);
+
+        System.out.println("CASO5: LABERINTO ___________________________________________________________________________");
+       // graphWorks.aplicarLaberinto(nodo00, nodo02, grafoNoDirigido);
+
 
     }
 }
