@@ -151,10 +151,5 @@ public class ListaSimple<T> {
         return false; // No se encontró el dato a modificar
     }
 
-    public void clearAll() {
-        nodoInicio = null;
-        contadorNodos = 0;
-    }
-
     // TODO: arreglar el error de que nodo tiene una lista de nodos y una lista da error si pones un índice que no existe no puedes igualar a null
 }

@@ -31,8 +31,4 @@ public class Pila<T> {
     public boolean estaVacia() {
         return datos.getNumeroDeDatos() == 0;
     }
-
-    public void clearAll() {
-        datos.clearAll();
-    }
 }

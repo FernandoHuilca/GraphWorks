@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laberinto.LaberintoController">
+    <children>
+        <ImageView fx:id="imagenEjemplo1" fitHeight="275.0" fitWidth="345.0" layoutX="184.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Imagenes/LaberintoEjemplo1.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="imagenEjemplo2" fitHeight="275.0" fitWidth="320.0" layoutX="550.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Imagenes/LaberintoEjemplo2.jpg" />
+            </image>
+        </ImageView>
+        <Label fx:id="labelEjemplo1" layoutX="282.0" layoutY="76.0" text="Ejemplo 1">
+            <font>
+                <Font name="Bodoni MT Black" size="21.0" />
+            </font>
+        </Label>
+        <Label fx:id="labelEjemplo2" layoutX="648.0" layoutY="76.0" text="Ejemplo 2">
+            <font>
+                <Font name="Bodoni MT Black" size="21.0" />
+            </font>
+        </Label>
+        <Button fx:id="botonVerEjemplo1" layoutX="316.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleVerEjemplo1" text="Ver">
+            <font>
+                <Font name="Bodoni MT Black" size="15.0" />
+            </font>
+        </Button>
+        <Button fx:id="botonVerEjemplo2" layoutX="681.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleVerEjemplo2" text="Ver">
+            <font>
+                <Font name="Bodoni MT Black" size="15.0" />
+            </font>
+        </Button>
+    </children>
+</Pane>

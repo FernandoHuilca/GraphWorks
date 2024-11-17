@@ -1,4 +1,8 @@
-package Logic;
+package com.example.laberinto;
+
+import Logic.GrafoNoDirigido;
+import Logic.GraphWorks;
+import Logic.Nodo;
 
 // Author:
 public class Main {
@@ -6,10 +10,7 @@ public class Main {
 
         GraphWorks graphWorks = GraphWorks.getInstance();
         GrafoNoDirigido grafoNoDirigido = new GrafoNoDirigido();
-        GrafoNoDirigido grafoNoDirigido1 = new GrafoNoDirigido();
         graphWorks.agregarGrafoNoDirigido(grafoNoDirigido);
-        graphWorks.agregarGrafoNoDirigido(grafoNoDirigido1);
-
 
 
         //System.out.println("CASO2: Agregar algunos nodos al grafo 0 de la app___________________________________________");
@@ -39,29 +40,6 @@ public class Main {
         grafoNoDirigido.agregarNodo(new Nodo<>("24"));
         grafoNoDirigido.agregarNodo(new Nodo<>("25"));
         grafoNoDirigido.agregarNodo(new Nodo<>("26"));
-
-
-        grafoNoDirigido1.agregarNodo(new Nodo<>("A"));
-        grafoNoDirigido1.agregarNodo(new Nodo<>("B"));
-        grafoNoDirigido1.agregarNodo(new Nodo<>("C"));
-        grafoNoDirigido1.agregarNodo(new Nodo<>("D"));
-        grafoNoDirigido1.agregarNodo(new Nodo<>("E"));
-        grafoNoDirigido1.agregarNodo(new Nodo<>("F"));
-        grafoNoDirigido1.agregarNodo(new Nodo<>("G"));
-        grafoNoDirigido1.agregarNodo(new Nodo<>("H"));
-        grafoNoDirigido1.agregarNodo(new Nodo<>("I"));
-
-        grafoNoDirigido1.agregarAristaANodo(0,1);
-        grafoNoDirigido1.agregarAristaANodo(1,2);
-        grafoNoDirigido1.agregarAristaANodo(2,3);
-        grafoNoDirigido1.agregarAristaANodo(2,4);
-        grafoNoDirigido1.agregarAristaANodo(0,5);
-        grafoNoDirigido1.agregarAristaANodo(5,6);
-        grafoNoDirigido1.agregarAristaANodo(5,7);
-        grafoNoDirigido1.agregarAristaANodo(7,8);
-
-
-
 
         //System.out.println("CASO3: AgregarArista (dirigir las aristas) a los nodos de un grafo específico_______________");
         grafoNoDirigido.agregarAristaANodo(0,1);
@@ -96,19 +74,9 @@ public class Main {
 
        // System.out.println("CASO4: Hacer el recorrido a profundidad en un grafo existente en GraphWorks ________________");
         System.out.println("_______________________ LA TRAZA DE LA PILA ES _______________________");
-        // Capturar el tiempo de inicio
-        long tiempoInicio = System.nanoTime();
         graphWorks.aplicarRecorridoEnLaberinto(grafoNoDirigido.getNodosDelGrafo().get(0),grafoNoDirigido.getNodosDelGrafo().get(17), grafoNoDirigido);
-        // Capturar el tiempo de finalización
-        long tiempoFin = System.nanoTime();
-        // Calcular el tiempo total de ejecución
-        long tiempoTotal = tiempoFin - tiempoInicio;
-        // Imprimir el tiempo en nanosegundos
-        System.out.println("Tiempo de ejecución: " + tiempoTotal + " nanosegundos.");
-        System.out.println("Duración en milisegundos aproximados: " + (tiempoTotal / 1_000_000)); // Convertir a milisegundos
 
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        graphWorks.aplicarRecorridoEnLaberinto(grafoNoDirigido1.getNodosDelGrafo().get(0),grafoNoDirigido1.getNodosDelGrafo().get(6), grafoNoDirigido);
+
 
     }
 }

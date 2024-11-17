@@ -42,7 +42,7 @@ public class GraphWorks {
     // Declara la lista 'salida' fuera del método que acumule el recorrido
     private ArrayList<String> salida = new ArrayList<>();
     Pila<Nodo> pila = new Pila<>();
-    ArrayList<String> nodosSalida = new ArrayList<>();
+    Pila<Nodo> nodosSalida = new Pila<>();
 
     public void aplicarRecorridoEnLaberinto(Nodo<String> nodoInicial, Nodo<String> nodoSalida, GrafoNoDirigido grafoAlQuePertenece) {
         if (nodoInicial == null) return;  // Verifica que el nodo no sea nulo
@@ -58,16 +58,16 @@ public class GraphWorks {
         for (int i = 0; i < nodoInicial.getNodosAdyacentes().size(); i++) {
             Nodo<String> nodoApuntado = nodoInicial.getNodosAdyacentes().get(i);
 
-            if (nodoApuntado == nodoSalida) {
-                for (int j = 0; j < pila.getNumDeDatos(); j++) {
-                    nodosSalida.add((String) pila.getDato(j).getInfoNodo());
+            if (nodoApuntado == nodoSalida){
+                for (int j = 0 ; j < pila.getNumDeDatos(); j++){
+                    nodosSalida.add(pila.getDato(j));
                 }
-                nodosSalida.add(nodoSalida.getInfoNodo());
+                nodosSalida.add(nodoSalida);
             }
 
             // Si el nodo no ha sido visitado, se realiza la llamada recursiva
             if (!nodoApuntado.estaVisitado()) {
-                aplicarRecorridoEnLaberinto(nodoApuntado, nodoSalida, grafoAlQuePertenece);
+                aplicarRecorridoEnLaberinto(nodoApuntado, nodoSalida,grafoAlQuePertenece);
             }
         }
 
@@ -81,16 +81,14 @@ public class GraphWorks {
         if (pila.estaVacia() && !yaRecorriTodosLosNodos(grafoAlQuePertenece)) {
             Nodo<String> siguienteNodoNoVisitado = grafoAlQuePertenece.getNoVisitado();
             if (siguienteNodoNoVisitado != null) {
-                aplicarRecorridoEnLaberinto(siguienteNodoNoVisitado, nodoSalida, grafoAlQuePertenece);
+                aplicarRecorridoEnLaberinto(siguienteNodoNoVisitado,nodoSalida, grafoAlQuePertenece);
             }
         }
 
         // Mostrar la salida solo al final del recorrido completo
         if (yaRecorriTodosLosNodos(grafoAlQuePertenece) && pila.estaVacia()) {
             System.out.println("La salida del recorrido es la siguiente: " + salida);
-            System.out.println("EL CAMINO A LA SALIDA ES: " + nodosSalida);
-            nodosSalida.clear();
-            salida.clear();
+            System.out.println("EL CAMINO A LA SALIDA ES: "); imprimirEstadoPila(nodosSalida);
         }
     }
 
