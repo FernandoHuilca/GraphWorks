@@ -19,9 +19,9 @@ public class LaberintoApplication extends Application {
 
         cargarGrafo();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(LaberintoApplication.class.getResource("Inicio.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LaberintoApplication.class.getResource("Laberinto.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1020, 665);
-        stage.setTitle("Laberinto");
+        stage.setTitle("Inicio");
         stage.setScene(scene);
         stage.show();
     }
