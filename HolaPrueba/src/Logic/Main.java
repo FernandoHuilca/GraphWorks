@@ -1,5 +1,7 @@
 package Logic;
 
+import java.util.ArrayList;
+
 // Author:
 public class Main {
     public static void main(String[] args) {
@@ -9,7 +11,6 @@ public class Main {
         GrafoNoDirigido grafoNoDirigido1 = new GrafoNoDirigido();
         graphWorks.agregarGrafoNoDirigido(grafoNoDirigido);
         graphWorks.agregarGrafoNoDirigido(grafoNoDirigido1);
-
 
 
         //System.out.println("CASO2: Agregar algunos nodos al grafo 0 de la app___________________________________________");
@@ -51,64 +52,73 @@ public class Main {
         grafoNoDirigido1.agregarNodo(new Nodo<>("H"));
         grafoNoDirigido1.agregarNodo(new Nodo<>("I"));
 
-        grafoNoDirigido1.agregarAristaANodo(0,1);
-        grafoNoDirigido1.agregarAristaANodo(1,2);
-        grafoNoDirigido1.agregarAristaANodo(2,3);
-        grafoNoDirigido1.agregarAristaANodo(2,4);
-        grafoNoDirigido1.agregarAristaANodo(0,5);
-        grafoNoDirigido1.agregarAristaANodo(5,6);
-        grafoNoDirigido1.agregarAristaANodo(5,7);
-        grafoNoDirigido1.agregarAristaANodo(7,8);
-
-
+        grafoNoDirigido1.agregarAristaANodo(0, 1);
+        grafoNoDirigido1.agregarAristaANodo(1, 2);
+        grafoNoDirigido1.agregarAristaANodo(2, 3);
+        grafoNoDirigido1.agregarAristaANodo(2, 4);
+        grafoNoDirigido1.agregarAristaANodo(0, 5);
+        grafoNoDirigido1.agregarAristaANodo(5, 6);
+        grafoNoDirigido1.agregarAristaANodo(5, 7);
+        grafoNoDirigido1.agregarAristaANodo(7, 8);
 
 
         //System.out.println("CASO3: AgregarArista (dirigir las aristas) a los nodos de un grafo específico_______________");
-        grafoNoDirigido.agregarAristaANodo(0,1);
-        grafoNoDirigido.agregarAristaANodo(1,2);
-        grafoNoDirigido.agregarAristaANodo(2,3);
-        grafoNoDirigido.agregarAristaANodo(3,4);
-        grafoNoDirigido.agregarAristaANodo(4,5);
-        grafoNoDirigido.agregarAristaANodo(5,6);
-        grafoNoDirigido.agregarAristaANodo(6,7);
-        grafoNoDirigido.agregarAristaANodo(7,8);
-        grafoNoDirigido.agregarAristaANodo(8,9);
-        grafoNoDirigido.agregarAristaANodo(9,10);
-        grafoNoDirigido.agregarAristaANodo(10,11);
-        grafoNoDirigido.agregarAristaANodo(11,12);
-        grafoNoDirigido.agregarAristaANodo(9,13);
-        grafoNoDirigido.agregarAristaANodo(13,14);
-        grafoNoDirigido.agregarAristaANodo(14,15);
-        grafoNoDirigido.agregarAristaANodo(15,16);
-        grafoNoDirigido.agregarAristaANodo(16,17);
-        grafoNoDirigido.agregarAristaANodo(15,18);
-        grafoNoDirigido.agregarAristaANodo(18,19);
-        grafoNoDirigido.agregarAristaANodo(18,20);
-        grafoNoDirigido.agregarAristaANodo(0,21);
-        grafoNoDirigido.agregarAristaANodo(21,22);
-        grafoNoDirigido.agregarAristaANodo(22,23);
-        grafoNoDirigido.agregarAristaANodo(23,24);
-        grafoNoDirigido.agregarAristaANodo(24,25);
+        grafoNoDirigido.agregarAristaANodo(0, 1);
+        grafoNoDirigido.agregarAristaANodo(1, 2);
+        grafoNoDirigido.agregarAristaANodo(2, 3);
+        grafoNoDirigido.agregarAristaANodo(3, 4);
+        grafoNoDirigido.agregarAristaANodo(4, 5);
+        grafoNoDirigido.agregarAristaANodo(5, 6);
+        grafoNoDirigido.agregarAristaANodo(6, 7);
+        grafoNoDirigido.agregarAristaANodo(7, 8);
+        grafoNoDirigido.agregarAristaANodo(8, 9);
+        grafoNoDirigido.agregarAristaANodo(9, 10);
+        grafoNoDirigido.agregarAristaANodo(10, 11);
+        grafoNoDirigido.agregarAristaANodo(11, 12);
+        grafoNoDirigido.agregarAristaANodo(9, 13);
+        grafoNoDirigido.agregarAristaANodo(13, 14);
+        grafoNoDirigido.agregarAristaANodo(14, 15);
+        grafoNoDirigido.agregarAristaANodo(15, 16);
+        grafoNoDirigido.agregarAristaANodo(16, 17);
+        grafoNoDirigido.agregarAristaANodo(15, 18);
+        grafoNoDirigido.agregarAristaANodo(18, 19);
+        grafoNoDirigido.agregarAristaANodo(18, 20);
+        grafoNoDirigido.agregarAristaANodo(0, 21);
+        grafoNoDirigido.agregarAristaANodo(21, 22);
+        grafoNoDirigido.agregarAristaANodo(22, 23);
+        grafoNoDirigido.agregarAristaANodo(23, 24);
+        grafoNoDirigido.agregarAristaANodo(24, 25);
+
+        System.out.println("Caso 1: Imprimir cantidad de nodos, aristas y traza del recorrido DFS de un grafo guardado en app");
+        System.out.println("Numero de aristas del grafo : " + graphWorks.getNumAristas(0));
+        System.out.println("Numero de Nodos del grafo : " + graphWorks.getNumNodos(0));
+
+        // el método " graphWorks.getTrazaRecorridoAProfundidad(0, 0) " devuelve un arrayList de tipo String donde
+        // contiene cada iteración de la pila por lo cual si se quiere ver todos se tiene que recorrer
+        // todo el arraylist que te devuleva
+
+        ArrayList<String> auxTrazaPilaDFS = graphWorks.getTrazaRecorridoAProfundidad(0, 0);
+        for (int i = 0; i < auxTrazaPilaDFS.size(); i++) {
+            System.out.println(auxTrazaPilaDFS.get(i));
+        }
 
 
 
-        System.out.println("Número de nodos: " + grafoNoDirigido.getContadorDeNodos()+ "\n" + "Número de arístas: " + grafoNoDirigido.getContadorDeAristas());
+        System.out.println("___________________________________________________________________________________________\n");
 
-       // System.out.println("CASO4: Hacer el recorrido a profundidad en un grafo existente en GraphWorks ________________");
-        System.out.println("_______________________ LA TRAZA DE LA PILA ES _______________________");
-        // Capturar el tiempo de inicio
-        long tiempoInicio = System.nanoTime();
-        graphWorks.aplicarRecorridoEnLaberinto(grafoNoDirigido.getNodosDelGrafo().get(0),grafoNoDirigido.getNodosDelGrafo().get(17), grafoNoDirigido);
-        // Capturar el tiempo de finalización
-        long tiempoFin = System.nanoTime();
-        // Calcular el tiempo total de ejecución
-        long tiempoTotal = tiempoFin - tiempoInicio;
-        // Imprimir el tiempo en nanosegundos
-        System.out.println("Tiempo de ejecución: " + tiempoTotal + " nanosegundos.");
-        System.out.println("Duración en milisegundos aproximados: " + (tiempoTotal / 1_000_000)); // Convertir a milisegundos
 
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        graphWorks.aplicarRecorridoEnLaberinto(grafoNoDirigido1.getNodosDelGrafo().get(0),grafoNoDirigido1.getNodosDelGrafo().get(6), grafoNoDirigido);
+        System.out.println("Numero de aristas del grafo : " + graphWorks.getNumAristas(1));
+        System.out.println("Numero de Nodos del grafo : " + graphWorks.getNumNodos(1));
+        ArrayList<String> auxTrazaPilaDFS1 = graphWorks.getTrazaRecorridoAProfundidad(1, 0);
 
+        for (int i = 0; i < auxTrazaPilaDFS1.size(); i++) {
+            System.out.println(auxTrazaPilaDFS1.get(i));
+
+        }
+
+
+        System.out.println("CASO 2: Imprimir la salida de un grafo NO dirigido asumiendo que este es un laberinto");
+        String caminoDeSalida = graphWorks.getCaminoDeSalida(0, 0,17);
+        System.out.println("camino de salida: \n" + caminoDeSalida );
     }
 }

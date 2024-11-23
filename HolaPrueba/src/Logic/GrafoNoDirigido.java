@@ -2,6 +2,7 @@ package Logic;
 
 public class GrafoNoDirigido extends Grafo {
 
+
     public GrafoNoDirigido(){
         super();
     }
