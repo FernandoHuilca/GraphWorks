@@ -120,5 +120,7 @@ public class Main {
         System.out.println("CASO 2: Imprimir la salida de un grafo NO dirigido asumiendo que este es un laberinto");
         String caminoDeSalida = graphWorks.getCaminoDeSalida(0, 0,17);
         System.out.println("camino de salida: \n" + caminoDeSalida );
+        String caminoDeSalida2 = graphWorks.getCaminoDeSalida(1, 0,5);
+        System.out.println("camino de salida: \n" + caminoDeSalida2 );
     }
 }

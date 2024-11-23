@@ -130,6 +130,7 @@ public abstract class Grafo {
         Nodo<String> nodoSalida = this.getNodo(numNodoSalida);
         ArrayList<Nodo<String>> visitados = new ArrayList<>();
         Pila<Nodo> pila = new Pila<>();
+        salida1 = null;
         caminoDeSalida(nodoEntrada, nodoSalida, visitados, pila);
         return salida1;
     }
@@ -150,7 +151,6 @@ public abstract class Grafo {
                 String aux = " ";
                 for (int i = 0; i < pila.getNumDeDatos(); i++) {
                     aux = aux + " " + pila.getDato(i).getInfoNodo();
-                    System.out.println(aux);
                 }
                 salida1 = aux + " " + nodoSalida.getInfoNodo();
                 return;
